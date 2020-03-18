@@ -1,0 +1,4 @@
+D:\important Files\SchoolWebPortal\Project\JWT-Authentication-with-.Net-Core-Web-API-and-Angular-7-master\WebAPI\WebAPI\obj\Debug\netcoreapp3.1\SchoolPortalAPI.csprojAssemblyReference.cache
+D:\important Files\SchoolWebPortal\Project\JWT-Authentication-with-.Net-Core-Web-API-and-Angular-7-master\WebAPI\WebAPI\obj\Debug\netcoreapp3.1\SchoolPortalAPI.MvcApplicationPartsAssemblyInfo.cache
+D:\important Files\SchoolWebPortal\Project\JWT-Authentication-with-.Net-Core-Web-API-and-Angular-7-master\WebAPI\WebAPI\obj\Debug\netcoreapp3.1\SchoolPortalAPI.AssemblyInfoInputs.cache
+D:\important Files\SchoolWebPortal\Project\JWT-Authentication-with-.Net-Core-Web-API-and-Angular-7-master\WebAPI\WebAPI\obj\Debug\netcoreapp3.1\SchoolPortalAPI.AssemblyInfo.cs

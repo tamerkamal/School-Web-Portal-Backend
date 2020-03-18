@@ -1,0 +1,16 @@
+D:\important Files\SchoolWebPortal\Project\JWT-Authentication-with-.Net-Core-Web-API-and-Angular-7-master\WebAPI\WebAPI\bin\Debug\netcoreapp2.2\appsettings.Development.json
+D:\important Files\SchoolWebPortal\Project\JWT-Authentication-with-.Net-Core-Web-API-and-Angular-7-master\WebAPI\WebAPI\bin\Debug\netcoreapp2.2\appsettings.json
+D:\important Files\SchoolWebPortal\Project\JWT-Authentication-with-.Net-Core-Web-API-and-Angular-7-master\WebAPI\WebAPI\bin\Debug\netcoreapp2.2\Properties\launchSettings.json
+D:\important Files\SchoolWebPortal\Project\JWT-Authentication-with-.Net-Core-Web-API-and-Angular-7-master\WebAPI\WebAPI\bin\Debug\netcoreapp2.2\SchoolPortalAPI.deps.json
+D:\important Files\SchoolWebPortal\Project\JWT-Authentication-with-.Net-Core-Web-API-and-Angular-7-master\WebAPI\WebAPI\bin\Debug\netcoreapp2.2\SchoolPortalAPI.runtimeconfig.json
+D:\important Files\SchoolWebPortal\Project\JWT-Authentication-with-.Net-Core-Web-API-and-Angular-7-master\WebAPI\WebAPI\bin\Debug\netcoreapp2.2\SchoolPortalAPI.runtimeconfig.dev.json
+D:\important Files\SchoolWebPortal\Project\JWT-Authentication-with-.Net-Core-Web-API-and-Angular-7-master\WebAPI\WebAPI\bin\Debug\netcoreapp2.2\SchoolPortalAPI.dll
+D:\important Files\SchoolWebPortal\Project\JWT-Authentication-with-.Net-Core-Web-API-and-Angular-7-master\WebAPI\WebAPI\bin\Debug\netcoreapp2.2\SchoolPortalAPI.pdb
+D:\important Files\SchoolWebPortal\Project\JWT-Authentication-with-.Net-Core-Web-API-and-Angular-7-master\WebAPI\WebAPI\obj\Debug\netcoreapp2.2\SchoolPortalAPI.RazorAssemblyInfo.cache
+D:\important Files\SchoolWebPortal\Project\JWT-Authentication-with-.Net-Core-Web-API-and-Angular-7-master\WebAPI\WebAPI\obj\Debug\netcoreapp2.2\SchoolPortalAPI.RazorAssemblyInfo.cs
+D:\important Files\SchoolWebPortal\Project\JWT-Authentication-with-.Net-Core-Web-API-and-Angular-7-master\WebAPI\WebAPI\obj\Debug\netcoreapp2.2\SchoolPortalAPI.AssemblyInfoInputs.cache
+D:\important Files\SchoolWebPortal\Project\JWT-Authentication-with-.Net-Core-Web-API-and-Angular-7-master\WebAPI\WebAPI\obj\Debug\netcoreapp2.2\SchoolPortalAPI.AssemblyInfo.cs
+D:\important Files\SchoolWebPortal\Project\JWT-Authentication-with-.Net-Core-Web-API-and-Angular-7-master\WebAPI\WebAPI\obj\Debug\netcoreapp2.2\SchoolPortalAPI.RazorTargetAssemblyInfo.cache
+D:\important Files\SchoolWebPortal\Project\JWT-Authentication-with-.Net-Core-Web-API-and-Angular-7-master\WebAPI\WebAPI\obj\Debug\netcoreapp2.2\SchoolPortalAPI.dll
+D:\important Files\SchoolWebPortal\Project\JWT-Authentication-with-.Net-Core-Web-API-and-Angular-7-master\WebAPI\WebAPI\obj\Debug\netcoreapp2.2\SchoolPortalAPI.pdb
+D:\important Files\SchoolWebPortal\Project\JWT-Authentication-with-.Net-Core-Web-API-and-Angular-7-master\WebAPI\WebAPI\obj\Debug\netcoreapp2.2\SchoolPortalAPI.csprojAssemblyReference.cache
