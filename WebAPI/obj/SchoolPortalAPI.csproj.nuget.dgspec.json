@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\important Files\\SchoolWebPortal\\Project\\JWT-Authentication-with-.Net-Core-Web-API-and-Angular-7-master\\WebAPI\\WebAPI\\SchoolPortalAPI.csproj": {}
+    "C:\\Users\\Tamer Kamal\\source\\repos\\SchoolWebPortal\\WebAPI\\WebAPI\\SchoolPortalAPI.csproj": {}
   },
   "projects": {
-    "D:\\important Files\\SchoolWebPortal\\Project\\JWT-Authentication-with-.Net-Core-Web-API-and-Angular-7-master\\WebAPI\\WebAPI\\SchoolPortalAPI.csproj": {
+    "C:\\Users\\Tamer Kamal\\source\\repos\\SchoolWebPortal\\WebAPI\\WebAPI\\SchoolPortalAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\important Files\\SchoolWebPortal\\Project\\JWT-Authentication-with-.Net-Core-Web-API-and-Angular-7-master\\WebAPI\\WebAPI\\SchoolPortalAPI.csproj",
+        "projectUniqueName": "C:\\Users\\Tamer Kamal\\source\\repos\\SchoolWebPortal\\WebAPI\\WebAPI\\SchoolPortalAPI.csproj",
         "projectName": "SchoolPortalAPI",
-        "projectPath": "D:\\important Files\\SchoolWebPortal\\Project\\JWT-Authentication-with-.Net-Core-Web-API-and-Angular-7-master\\WebAPI\\WebAPI\\SchoolPortalAPI.csproj",
+        "projectPath": "C:\\Users\\Tamer Kamal\\source\\repos\\SchoolWebPortal\\WebAPI\\WebAPI\\SchoolPortalAPI.csproj",
         "packagesPath": "C:\\Users\\Tamer Kamal\\.nuget\\packages\\",
-        "outputPath": "D:\\important Files\\SchoolWebPortal\\Project\\JWT-Authentication-with-.Net-Core-Web-API-and-Angular-7-master\\WebAPI\\WebAPI\\obj\\",
+        "outputPath": "C:\\Users\\Tamer Kamal\\source\\repos\\SchoolWebPortal\\WebAPI\\WebAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -66,7 +66,7 @@
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
-              "version": "[2.2.0, )"
+              "version": "[2.2.4, )"
             }
           },
           "imports": [

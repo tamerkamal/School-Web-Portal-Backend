@@ -22,7 +22,7 @@ namespace SchoolPortalAPI.BOL
         [Required]
         string Address { get; set; }
         [Required]
-
         Guid MembershipTypeId { get; set; }
+        MembershipType MembershipType { get; set; }
     }
 }

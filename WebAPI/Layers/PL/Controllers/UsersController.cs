@@ -11,59 +11,50 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using SchoolPortalAPI.BOL;
-using SchoolPortalAPI.Models;
+using SchoolPortalAPI.DAL;
+using SchoolPortalAPI.ViewModels;
 
 namespace SchoolPortalAPI.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
-    public class AppUserController : ControllerBase
+    [Route("[controller]/[action]")]
+    public class UsersController : ControllerBase
     {
         private readonly UserManager<AppUser> _userManager;
-        private readonly SignInManager<AppUser> _singInManager;
-        private readonly AppSettingsVM _appSettings;
-
-        public AppUserController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IOptions<AppSettingsVM> appSettings)
+        private readonly AppSettingsVModel _appSettings;
+        public UsersController(
+           UserManager<AppUser> userManager,
+           IOptions<AppSettingsVModel> appSettings)
         {
             _userManager = userManager;
-            _singInManager = signInManager;
+            //_singInManager = signInManager;
             _appSettings = appSettings.Value;
         }
 
         [HttpPost]
-        [Route("Register")]
-        //POST : /api/AppUser/PostMember
-
-        //    public async Task<IMember> PostMember()
-        //{
-        //    return await 
-        //}
-        public async Task<Object> PostUser(AppUserVM model)
+        public async Task<Object> Register(LoginVModel loginVModel)
         {
             var user = new AppUser()
             {
-                UserName = model.Email,
-                Email = model.Email
+                UserName = loginVModel.UserName,
+                Email = loginVModel.UserName
             };
-
             try
             {
-                var result = await _userManager.CreateAsync(user, model.Password);
-                return Ok(result);
+                IdentityResult identityResult = await _userManager.CreateAsync(user, loginVModel.Password);
+
+                return Ok(identityResult);
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }
 
         [HttpPost]
-        [Route("Login")]
-        //POST : /api/ApplicationUser/Login
-        public async Task<IActionResult> Login(LoginVM model)
+        public async Task<IActionResult> Login(LoginVModel model)
         {
-            var user = await _userManager.FindByNameAsync(model.UserName);
+            AppUser user = await _userManager.FindByNameAsync(model.UserName);
             if (user != null && await _userManager.CheckPasswordAsync(user, model.Password))
             {
                 var tokenDescriptor = new SecurityTokenDescriptor
@@ -73,7 +64,10 @@ namespace SchoolPortalAPI.Controllers
                         new Claim("UserID",user.Id.ToString())
                     }),
                     Expires = DateTime.UtcNow.AddDays(1),
-                    SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_appSettings.JWT_Secret)), SecurityAlgorithms.HmacSha256Signature)
+                    SigningCredentials = new SigningCredentials(
+                        new SymmetricSecurityKey(
+                            Encoding.UTF8.GetBytes(_appSettings.JWT_Secret)),
+                            SecurityAlgorithms.HmacSha256Signature)
                 };
                 var tokenHandler = new JwtSecurityTokenHandler();
                 var securityToken = tokenHandler.CreateToken(tokenDescriptor);

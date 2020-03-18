@@ -7,13 +7,15 @@ using System.Threading.Tasks;
 
 namespace SchoolPortalAPI.BOL
 {
-    public abstract class Member : IMember
+    public class Member : IMember
     {
         [Key]
         public Guid MemberId { get; set; }
         public string FirsName { get; set; }
         [Required]
         public string LastName { get; set; }
+        [Required]
+        public DateTime BirthDate { get; set; }
         [Required]
         public string Email { get; set; }
         [Required]

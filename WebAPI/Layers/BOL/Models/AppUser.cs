@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SchoolPortalAPI.BOL
 {
-    public class AppUser : IdentityUser
+    public class AppUser : IdentityUser<string>
     {
         public string FullName { get; set; }
     }
