@@ -8,6 +8,7 @@ namespace SchoolPortalAPI.DAL.Repositories
 {
     public interface IMembersRepo
     {
-        Task<Member> RegisterMember(Member member);
+        Task<Member> PostMember(Member member);
+        IQueryable<Member> GetMembers();
     }
 }

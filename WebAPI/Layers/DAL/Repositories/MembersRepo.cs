@@ -17,7 +17,7 @@ namespace SchoolPortalAPI.DAL.Repositories
             _context = context;
             _dbset = _context.Set<Member>();
         }
-        public async Task<Member> RegisterMember(Member memberObj)
+        public async Task<Member> PostMember(Member memberObj)
         {
             Member member = new Member()
             {
@@ -33,6 +33,11 @@ namespace SchoolPortalAPI.DAL.Repositories
             _dbset.Add(member);
             await _context.SaveChangesAsync();
             return member;
+        }
+
+        public IQueryable<Member> GetMembers()
+        {
+            return _dbset;
         }
     }
 }

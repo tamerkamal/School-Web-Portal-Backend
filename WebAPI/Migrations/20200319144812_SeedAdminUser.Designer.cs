@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SchoolPortalAPI.Models;
 
 namespace SchoolPortalAPI.Migrations
 {
     [DbContext(typeof(SchoolDbContext))]
-    partial class SchoolDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200319144812_SeedAdminUser")]
+    partial class SeedAdminUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -26,9 +28,6 @@ namespace SchoolPortalAPI.Migrations
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
-
-                    b.Property<string>("Discriminator")
-                        .IsRequired();
 
                     b.Property<string>("Name")
                         .HasMaxLength(256);
@@ -45,7 +44,14 @@ namespace SchoolPortalAPI.Migrations
 
                     b.ToTable("AspNetRoles");
 
-                    b.HasDiscriminator<string>("Discriminator").HasValue("IdentityRole");
+                    b.HasData(
+                        new
+                        {
+                            Id = "d8901f01-1cf8-483d-8a5e-8f328a2bab2b",
+                            ConcurrencyStamp = "4ee98774-e367-4d28-892b-b0513944581a",
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -170,16 +176,11 @@ namespace SchoolPortalAPI.Migrations
 
                     b.Property<string>("RoleId");
 
-                    b.Property<string>("Discriminator")
-                        .IsRequired();
-
                     b.HasKey("UserId", "RoleId");
 
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles");
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("IdentityUserRole<string>");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -259,65 +260,13 @@ namespace SchoolPortalAPI.Migrations
                         });
                 });
 
-            modelBuilder.Entity("SchoolPortalAPI.BOL.Security.AppRole", b =>
-                {
-                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityRole");
-
-                    b.HasDiscriminator().HasValue("AppRole");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "2147483645",
-                            ConcurrencyStamp = "2067ce1d-70d4-4c18-a37e-6870909bbbc2",
-                            Name = "Admin",
-                            NormalizedName = "ADMIN"
-                        },
-                        new
-                        {
-                            Id = "3147483643",
-                            ConcurrencyStamp = "39f828da-4d25-44f3-81f0-6cf7a839b859",
-                            Name = "Member",
-                            NormalizedName = "MEMBER"
-                        });
-                });
-
-            modelBuilder.Entity("SchoolPortalAPI.BOL.Security.AppUser", b =>
+            modelBuilder.Entity("SchoolPortalAPI.BOL.AppUser", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
                     b.Property<string>("FullName");
 
                     b.HasDiscriminator().HasValue("AppUser");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "2147483646",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "8b268e59-adec-437f-8a53-a398412a40f8",
-                            Email = "admin@gmail.com",
-                            EmailConfirmed = false,
-                            LockoutEnabled = false,
-                            PasswordHash = "1234",
-                            PhoneNumberConfirmed = false,
-                            TwoFactorEnabled = false,
-                            UserName = "admin@gmail.com"
-                        });
-                });
-
-            modelBuilder.Entity("SchoolPortalAPI.BOL.Security.AppUserRole", b =>
-                {
-                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUserRole<string>");
-
-                    b.HasDiscriminator().HasValue("AppUserRole");
-
-                    b.HasData(
-                        new
-                        {
-                            UserId = "2147483646",
-                            RoleId = "2147483645"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

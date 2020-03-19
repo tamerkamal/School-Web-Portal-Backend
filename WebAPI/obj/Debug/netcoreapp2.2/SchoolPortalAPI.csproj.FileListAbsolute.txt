@@ -22,6 +22,7 @@ C:\Users\Tamer Kamal\source\repos\SchoolWebPortal\WebAPI\WebAPI\bin\Debug\netcor
 C:\Users\Tamer Kamal\source\repos\SchoolWebPortal\WebAPI\WebAPI\bin\Debug\netcoreapp2.2\SchoolPortalAPI.runtimeconfig.dev.json
 C:\Users\Tamer Kamal\source\repos\SchoolWebPortal\WebAPI\WebAPI\bin\Debug\netcoreapp2.2\SchoolPortalAPI.dll
 C:\Users\Tamer Kamal\source\repos\SchoolWebPortal\WebAPI\WebAPI\bin\Debug\netcoreapp2.2\SchoolPortalAPI.pdb
+C:\Users\Tamer Kamal\source\repos\SchoolWebPortal\WebAPI\WebAPI\obj\Debug\netcoreapp2.2\SchoolPortalAPI.csprojAssemblyReference.cache
 C:\Users\Tamer Kamal\source\repos\SchoolWebPortal\WebAPI\WebAPI\obj\Debug\netcoreapp2.2\SchoolPortalAPI.RazorAssemblyInfo.cache
 C:\Users\Tamer Kamal\source\repos\SchoolWebPortal\WebAPI\WebAPI\obj\Debug\netcoreapp2.2\SchoolPortalAPI.RazorAssemblyInfo.cs
 C:\Users\Tamer Kamal\source\repos\SchoolWebPortal\WebAPI\WebAPI\obj\Debug\netcoreapp2.2\SchoolPortalAPI.AssemblyInfoInputs.cache
@@ -29,4 +30,3 @@ C:\Users\Tamer Kamal\source\repos\SchoolWebPortal\WebAPI\WebAPI\obj\Debug\netcor
 C:\Users\Tamer Kamal\source\repos\SchoolWebPortal\WebAPI\WebAPI\obj\Debug\netcoreapp2.2\SchoolPortalAPI.RazorTargetAssemblyInfo.cache
 C:\Users\Tamer Kamal\source\repos\SchoolWebPortal\WebAPI\WebAPI\obj\Debug\netcoreapp2.2\SchoolPortalAPI.dll
 C:\Users\Tamer Kamal\source\repos\SchoolWebPortal\WebAPI\WebAPI\obj\Debug\netcoreapp2.2\SchoolPortalAPI.pdb
-C:\Users\Tamer Kamal\source\repos\SchoolWebPortal\WebAPI\WebAPI\obj\Debug\netcoreapp2.2\SchoolPortalAPI.csprojAssemblyReference.cache

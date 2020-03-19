@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SchoolPortalAPI.Models;
 
 namespace SchoolPortalAPI.Migrations
 {
     [DbContext(typeof(SchoolDbContext))]
-    partial class SchoolDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200319153231_ReSeedAdminUser")]
+    partial class ReSeedAdminUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -269,16 +271,9 @@ namespace SchoolPortalAPI.Migrations
                         new
                         {
                             Id = "2147483645",
-                            ConcurrencyStamp = "2067ce1d-70d4-4c18-a37e-6870909bbbc2",
+                            ConcurrencyStamp = "7ef97c35-8090-4049-aca1-53b0686fcbf6",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
-                        },
-                        new
-                        {
-                            Id = "3147483643",
-                            ConcurrencyStamp = "39f828da-4d25-44f3-81f0-6cf7a839b859",
-                            Name = "Member",
-                            NormalizedName = "MEMBER"
                         });
                 });
 
@@ -295,7 +290,7 @@ namespace SchoolPortalAPI.Migrations
                         {
                             Id = "2147483646",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "8b268e59-adec-437f-8a53-a398412a40f8",
+                            ConcurrencyStamp = "049dc5d6-ab11-45d6-914c-e0a336a966dd",
                             Email = "admin@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,

@@ -28,7 +28,8 @@
           "Microsoft.AspNetCore.Cors": "2.2.0",
           "Microsoft.AspNetCore.Razor.Design": "2.2.0",
           "Microsoft.NETCore.App": "2.2.0",
-          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.2.4"
+          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.2.4",
+          "System.Linq.Dynamic.Core": "1.0.22"
         },
         "runtime": {
           "SchoolPortalAPI.dll": {}
@@ -327,6 +328,17 @@
         },
         "compile": {
           "lib/netstandard1.0/System.Composition.TypedParts.dll": {}
+        }
+      },
+      "System.Linq.Dynamic.Core/1.0.22": {
+        "runtime": {
+          "lib/netcoreapp2.1/System.Linq.Dynamic.Core.dll": {
+            "assemblyVersion": "1.0.22.0",
+            "fileVersion": "1.0.22.0"
+          }
+        },
+        "compile": {
+          "lib/netcoreapp2.1/System.Linq.Dynamic.Core.dll": {}
         }
       },
       "System.Linq.Parallel/4.3.0": {
@@ -3663,6 +3675,13 @@
       "sha512": "sha512-0Zae/FtzeFgDBBuILeIbC/T9HMYbW4olAmi8XqqAGosSOWvXfiQLfARZEhiGd0LVXaYgXr0NhxiU1LldRP1fpQ==",
       "path": "system.composition.typedparts/1.0.31",
       "hashPath": "system.composition.typedparts.1.0.31.nupkg.sha512"
+    },
+    "System.Linq.Dynamic.Core/1.0.22": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-9oXF5s9WxsGNJBGYB/mooytf/ZE9dtJkddrU+z+9USWtUn/NXBTYnhba7IGZEeuP75NAIkwh1ut2VomxiJfgEw==",
+      "path": "system.linq.dynamic.core/1.0.22",
+      "hashPath": "system.linq.dynamic.core.1.0.22.nupkg.sha512"
     },
     "System.Linq.Parallel/4.3.0": {
       "type": "package",

@@ -5,9 +5,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SchoolPortalAPI.BOL
+namespace SchoolPortalAPI.BOL.Security
 {
-    public class AppUser : IdentityUser<string>
+    public class AppUser : IdentityUser
     {
         public string FullName { get; set; }
     }

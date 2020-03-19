@@ -5,12 +5,13 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using SchoolPortalAPI.BOL;
+using SchoolPortalAPI.BOL.Security;
 using SchoolPortalAPI.DAL;
 using SchoolPortalAPI.ViewModels;
 
@@ -18,6 +19,7 @@ namespace SchoolPortalAPI.Controllers
 {
     [ApiController]
     [Route("[controller]/[action]")]
+    [AllowAnonymous]
     public class UsersController : ControllerBase
     {
         private readonly UserManager<AppUser> _userManager;
@@ -32,6 +34,7 @@ namespace SchoolPortalAPI.Controllers
         }
 
         [HttpPost]
+        // Post: /Users/Register
         public async Task<Object> Register(LoginVModel loginVModel)
         {
             var user = new AppUser()
@@ -42,7 +45,10 @@ namespace SchoolPortalAPI.Controllers
             try
             {
                 IdentityResult identityResult = await _userManager.CreateAsync(user, loginVModel.Password);
-
+                if (identityResult.Succeeded)
+                {
+                    _userManager.AddToRoleAsync(user, "Member").Wait();
+                }
                 return Ok(identityResult);
             }
             catch (Exception ex)
@@ -52,6 +58,7 @@ namespace SchoolPortalAPI.Controllers
         }
 
         [HttpPost]
+        // Post: /Users/Login
         public async Task<IActionResult> Login(LoginVModel model)
         {
             AppUser user = await _userManager.FindByNameAsync(model.UserName);

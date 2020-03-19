@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -11,13 +8,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using SchoolPortalAPI.BOL;
+using SchoolPortalAPI.BOL.Security;
+using SchoolPortalAPI.BLL;
 using SchoolPortalAPI.Models;
 using SchoolPortalAPI.DAL.Repositories;
 using SchoolPortalAPI.ViewModels;
+using SchoolPortalAPI.DAL;
 
 namespace SchoolPortalAPI
 {
@@ -27,15 +24,12 @@ namespace SchoolPortalAPI
         {
             Configuration = configuration;
         }
-
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             //Inject AppSettings
             AddAppSettings(services);
-            //services.Configure<AppSettingsVModel>(Configuration.GetSection("ApplicationSettings"));
 
             services.AddMvc().SetCompatibilityVersion
                              (CompatibilityVersion.Version_2_2);
@@ -43,7 +37,8 @@ namespace SchoolPortalAPI
             AddSqlConnections(services);
 
             services.AddDefaultIdentity<AppUser>()
-                .AddEntityFrameworkStores<SchoolDbContext>();
+                    .AddRoles<IdentityRole>()
+                    .AddEntityFrameworkStores<SchoolDbContext>();
 
             AddIdentityOptions(services);
 
@@ -52,13 +47,13 @@ namespace SchoolPortalAPI
             //Jwt Authentication
             AddBearerAuthentication(services);
 
-            services.AddScoped(typeof(IMembersRepo), typeof(MembersRepo));
+            AddRepositories(services);
+
+            AddServices(services);
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-
             app.Use(async (ctx, next) =>
             {
                 await next();
@@ -80,12 +75,24 @@ namespace SchoolPortalAPI
 
             );
 
+            //ApplicationDbInitializer.SeedUsers(userManager);
+
             app.UseAuthentication();
 
             app.UseMvc();
+
+
         }
 
         #region Startup Helper Methods
+        private void AddRepositories(IServiceCollection services)
+        {
+            services.AddScoped(typeof(IMembersRepo), typeof(MembersRepo));
+        }
+        private void AddServices(IServiceCollection services)
+        {
+            services.AddScoped(typeof(IPaginationService<>), typeof(PaginationService<>));
+        }
         private void AddIdentityOptions(IServiceCollection services)
         {
             services.Configure<IdentityOptions>(options =>
