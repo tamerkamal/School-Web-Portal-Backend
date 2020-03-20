@@ -11,7 +11,7 @@ namespace SchoolPortalAPI.BLL
         {
             return recordsList.Count();
         }
-        public int CountTotalPages(IQueryable<T> records, int pageSize)
+        public int CountTotalPages(IEnumerable<T> records, int pageSize)
         {
             int totalPages;
             int totlalRecords = CountTotalRecords(records.ToList());
@@ -24,16 +24,16 @@ namespace SchoolPortalAPI.BLL
 
             return totalPages;
         }
-        public List<T> GetPageRecords(IQueryable<T> records, int pageSize, int pageNum)
+        public List<T> GetPageRecords(IEnumerable<T> records, int pageSize, int pageNum)
         {
-            if (CountTotalPages(records, pageSize) <= pageNum)
-            {
-                return records.Skip((pageNum - 1) * pageSize).Take(pageSize).ToList();
-            }
-            else
-            {
-                throw new ArgumentNullException("Page");
-            }
+            //if (CountTotalPages(records, pageSize) <= pageNum)
+            //{
+            return records.Skip((pageNum - 1) * pageSize).Take(pageSize).ToList();
+            //}
+            //else
+            //{
+            //    throw new ArgumentNullException("Page");
+            //}
         }
     }
 }

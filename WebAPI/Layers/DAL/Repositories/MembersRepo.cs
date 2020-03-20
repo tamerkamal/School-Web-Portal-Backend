@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SchoolPortalAPI.BOL;
 using SchoolPortalAPI.Models;
+using SchoolPortalAPI.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,18 +18,21 @@ namespace SchoolPortalAPI.DAL.Repositories
             _context = context;
             _dbset = _context.Set<Member>();
         }
-        public async Task<Member> PostMember(Member memberObj)
+        public async Task<Member> PostMember(RegisterVModel registerVModel)
         {
+            Guid membershipTypeId = _context.MembershipTypes.Where(m => m.Name == registerVModel.MembershipTypeName)
+                                                            .Select(m => m.MembershipTypeId)
+                                                            .Single();
             Member member = new Member()
             {
-                Address = memberObj.Address,
-                BirthDate = memberObj.BirthDate,
-                Email = memberObj.Email,
-                FirsName = memberObj.FirsName,
-                LastName = memberObj.LastName,
-                Phone = memberObj.Phone,
+                Address = registerVModel.Address,
+                BirthDate = registerVModel.BirthDate,
+                Email = registerVModel.Email,
+                FirstName = registerVModel.FirsName,
+                LastName = registerVModel.LastName,
+                Phone = registerVModel.Phone,
                 MemberId = Guid.NewGuid(),
-                MembershipTypeId = memberObj.MembershipTypeId
+                MembershipTypeId = membershipTypeId
             };
             _dbset.Add(member);
             await _context.SaveChangesAsync();
@@ -37,7 +41,7 @@ namespace SchoolPortalAPI.DAL.Repositories
 
         public IQueryable<Member> GetMembers()
         {
-            return _dbset;
+            return _dbset.Include(m => m.MembershipType);
         }
     }
 }

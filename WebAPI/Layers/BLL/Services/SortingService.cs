@@ -16,14 +16,7 @@ namespace SchoolPortalAPI.BLL
             if (string.IsNullOrEmpty(sortBy))
             { throw new ArgumentNullException("sortBy"); }
 
-            if (isSortDesc == true)
-            {
-                source = source.OrderBy(sortBy).Reverse();
-            }
-            else
-            {
-                source = source.OrderBy(sortBy);
-            }
+            source = source.OrderBy(sortBy);
             return source;
         }
     }

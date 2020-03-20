@@ -6,13 +6,14 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using SchoolPortalAPI.BLL;
+using SchoolPortalAPI.BOL;
 using SchoolPortalAPI.BOL.Security;
-using SchoolPortalAPI.DAL;
+using SchoolPortalAPI.DAL.Repositories;
 using SchoolPortalAPI.ViewModels;
 
 namespace SchoolPortalAPI.Controllers
@@ -24,30 +25,43 @@ namespace SchoolPortalAPI.Controllers
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly AppSettingsVModel _appSettings;
+        private readonly IMembersRepo _repo;
+        private readonly IPaginationService<Member> _paginationService;
         public UsersController(
            UserManager<AppUser> userManager,
-           IOptions<AppSettingsVModel> appSettings)
+           IOptions<AppSettingsVModel> appSettings,
+           IPaginationService<Member> paginationService,
+           IMembersRepo repo)
         {
             _userManager = userManager;
             //_singInManager = signInManager;
             _appSettings = appSettings.Value;
+            _repo = repo;
+            _paginationService = paginationService;
         }
 
         [HttpPost]
         // Post: /Users/Register
-        public async Task<Object> Register(LoginVModel loginVModel)
+        public async Task<Object> Register(RegisterVModel registerVModel)
         {
-            var user = new AppUser()
-            {
-                UserName = loginVModel.UserName,
-                Email = loginVModel.UserName
-            };
             try
             {
-                IdentityResult identityResult = await _userManager.CreateAsync(user, loginVModel.Password);
+                var user = new AppUser()
+                {
+                    UserName = registerVModel.Email,
+                    Email = registerVModel.Email
+                };
+                List<string> userRoles = new List<string>(new string[] { "Member" });
+                List<string> memberRoleOptions = new List<string>(new string[] { "Student", "Teacher", "Parent" });
+                if (memberRoleOptions.Contains(registerVModel.MembershipTypeName))
+                {
+                    userRoles.Add(registerVModel.MembershipTypeName);
+                }
+                IdentityResult identityResult = await _userManager.CreateAsync(user, registerVModel.Password);
                 if (identityResult.Succeeded)
                 {
-                    _userManager.AddToRoleAsync(user, "Member").Wait();
+                    await _userManager.AddToRolesAsync(user, userRoles);
+                    await _repo.PostMember(registerVModel);
                 }
                 return Ok(identityResult);
             }
@@ -58,10 +72,15 @@ namespace SchoolPortalAPI.Controllers
         }
 
         [HttpPost]
-        // Post: /Users/Login
-        public async Task<IActionResult> Login(LoginVModel model)
+        // Post: /Users/AdminLogin
+        public async Task<IActionResult> AdminLogin(LoginVModel model)
         {
-            AppUser user = await _userManager.FindByNameAsync(model.UserName);
+            AppUser user = await _userManager.FindByEmailAsync(model.UserName);
+            var roles = await _userManager.GetRolesAsync(user);
+            if (!roles.Contains("Admin"))
+            {
+                throw new UnauthorizedAccessException();
+            }
             if (user != null && await _userManager.CheckPasswordAsync(user, model.Password))
             {
                 var tokenDescriptor = new SecurityTokenDescriptor
@@ -81,8 +100,31 @@ namespace SchoolPortalAPI.Controllers
                 var token = tokenHandler.WriteToken(securityToken);
                 return Ok(new { token });
             }
-            else
-                return BadRequest(new { message = "Username or password is incorrect." });
+            else { return BadRequest(new { message = "Username or password is incorrect." }); }
+        }
+
+        [Authorize(Roles = "Admin")]
+        //Get:/Users/Get
+        public IEnumerable<Member> Get()
+        {
+            return _repo.GetMembers().ToList();
+        }
+
+        [Authorize(Roles = "Admin")]
+        [Route("/Users/GetWithPagAndSort/{pageNum}/{pageSize}/{sortBy?}/{isSortDesc?}")]
+        [HttpGet]
+        public IEnumerable<Member> GetWithPaginationAndSorting(int pageNum, int pageSize, string sortBy, bool isSortDesc = false)
+        {
+            if (sortBy == "null")
+            {
+                return _paginationService.GetPageRecords(Get(), pageSize, pageNum);
+            }
+            IEnumerable<Member> members = _repo.GetMembers().Sort(sortBy, isSortDesc);
+            if (isSortDesc)
+            {
+                members = members.ToList().Reverse<Member>();
+            }
+            return _paginationService.GetPageRecords(members, pageSize, pageNum);
         }
     }
 }

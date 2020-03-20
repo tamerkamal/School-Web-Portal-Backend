@@ -7,6 +7,6 @@ namespace SchoolPortalAPI.BLL
 {
     public interface IPaginationService<T> where T : class
     {
-        List<T> GetPageRecords(IQueryable<T> records, int pageSize, int pageNum);
+        List<T> GetPageRecords(IEnumerable<T> records, int pageSize, int pageNum);
     }
 }

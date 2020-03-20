@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SchoolPortalAPI.Models;
 
 namespace SchoolPortalAPI.Migrations
 {
     [DbContext(typeof(SchoolDbContext))]
-    partial class SchoolDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200319224930_SeedingMembersRoles")]
+    partial class SeedingMembersRoles
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -212,7 +214,7 @@ namespace SchoolPortalAPI.Migrations
                     b.Property<string>("Email")
                         .IsRequired();
 
-                    b.Property<string>("FirstName");
+                    b.Property<string>("FirsName");
 
                     b.Property<string>("LastName")
                         .IsRequired();
@@ -269,35 +271,35 @@ namespace SchoolPortalAPI.Migrations
                         new
                         {
                             Id = "2147483645",
-                            ConcurrencyStamp = "57afa154-d804-4d2d-b101-41875358abd1",
+                            ConcurrencyStamp = "3ed38d18-573f-4cd9-950d-dccde8bf92ad",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = "3147483643",
-                            ConcurrencyStamp = "a323b857-4dcc-4c9c-8088-07a88ee9f98f",
+                            ConcurrencyStamp = "fec79b21-c948-4524-b3b9-bd62e1e7f6b4",
                             Name = "Member",
                             NormalizedName = "MEMBER"
                         },
                         new
                         {
                             Id = "4147483644",
-                            ConcurrencyStamp = "ad0101ab-c7f4-496f-ac04-8a0343e805d5",
+                            ConcurrencyStamp = "5b1978e1-32f1-4574-acef-73bc55a348da",
                             Name = "Student",
                             NormalizedName = "STUDENT"
                         },
                         new
                         {
                             Id = "5147483645",
-                            ConcurrencyStamp = "8c4c6fff-8404-40aa-b239-b53e027ab27d",
+                            ConcurrencyStamp = "c7271121-bc4c-4fad-bc4a-a8823a622974",
                             Name = "Parent",
                             NormalizedName = "PARENT"
                         },
                         new
                         {
                             Id = "6147483646",
-                            ConcurrencyStamp = "433c1cc7-b7e2-48ca-8f09-11157fb23c90",
+                            ConcurrencyStamp = "04cd50a0-30b9-4988-8d7e-0b34efcc31d1",
                             Name = "Teacher",
                             NormalizedName = "TEACHER"
                         });
@@ -316,13 +318,13 @@ namespace SchoolPortalAPI.Migrations
                         {
                             Id = "2147483646",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "a7966ed6-d785-4fcf-a350-5b3e4410af38",
+                            ConcurrencyStamp = "a82ae38a-dd95-48a5-9388-bb9e16b6d39f",
                             Email = "admin@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEPJoXqoP5WSQK52ZL5rZwa4h8wE1hh9pge8ywvdz+V9WpBRa3V8n45qK/ZIo6Gmtqw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELQ1TAWawNOj4OLQkAYqFnAFhpDFmqnMiDfUj210aZrwBsXjFQ+2e80fxeRYhbbk5w==",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
                             UserName = "admin@gmail.com"

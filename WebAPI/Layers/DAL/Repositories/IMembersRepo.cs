@@ -1,4 +1,5 @@
 ﻿using SchoolPortalAPI.BOL;
+using SchoolPortalAPI.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ namespace SchoolPortalAPI.DAL.Repositories
 {
     public interface IMembersRepo
     {
-        Task<Member> PostMember(Member member);
+        Task<Member> PostMember(RegisterVModel member);
         IQueryable<Member> GetMembers();
     }
 }

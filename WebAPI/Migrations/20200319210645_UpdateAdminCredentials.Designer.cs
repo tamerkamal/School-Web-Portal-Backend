@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SchoolPortalAPI.Models;
 
 namespace SchoolPortalAPI.Migrations
 {
     [DbContext(typeof(SchoolDbContext))]
-    partial class SchoolDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200319210645_UpdateAdminCredentials")]
+    partial class UpdateAdminCredentials
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -212,7 +214,7 @@ namespace SchoolPortalAPI.Migrations
                     b.Property<string>("Email")
                         .IsRequired();
 
-                    b.Property<string>("FirstName");
+                    b.Property<string>("FirsName");
 
                     b.Property<string>("LastName")
                         .IsRequired();
@@ -269,37 +271,16 @@ namespace SchoolPortalAPI.Migrations
                         new
                         {
                             Id = "2147483645",
-                            ConcurrencyStamp = "57afa154-d804-4d2d-b101-41875358abd1",
+                            ConcurrencyStamp = "2d4b9577-ea2e-4786-8c68-c972a8a4cda3",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = "3147483643",
-                            ConcurrencyStamp = "a323b857-4dcc-4c9c-8088-07a88ee9f98f",
+                            ConcurrencyStamp = "df44e39b-7ed8-47df-b95e-ff1dd885e6cc",
                             Name = "Member",
                             NormalizedName = "MEMBER"
-                        },
-                        new
-                        {
-                            Id = "4147483644",
-                            ConcurrencyStamp = "ad0101ab-c7f4-496f-ac04-8a0343e805d5",
-                            Name = "Student",
-                            NormalizedName = "STUDENT"
-                        },
-                        new
-                        {
-                            Id = "5147483645",
-                            ConcurrencyStamp = "8c4c6fff-8404-40aa-b239-b53e027ab27d",
-                            Name = "Parent",
-                            NormalizedName = "PARENT"
-                        },
-                        new
-                        {
-                            Id = "6147483646",
-                            ConcurrencyStamp = "433c1cc7-b7e2-48ca-8f09-11157fb23c90",
-                            Name = "Teacher",
-                            NormalizedName = "TEACHER"
                         });
                 });
 
@@ -316,13 +297,13 @@ namespace SchoolPortalAPI.Migrations
                         {
                             Id = "2147483646",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "a7966ed6-d785-4fcf-a350-5b3e4410af38",
+                            ConcurrencyStamp = "b0e05317-7ec0-460a-9d95-972c9886b8ed",
                             Email = "admin@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEPJoXqoP5WSQK52ZL5rZwa4h8wE1hh9pge8ywvdz+V9WpBRa3V8n45qK/ZIo6Gmtqw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELLVltc00TFE2vmMCevlXkohKlCpP12z8K+ULq1JsUnNYgnmqNs6JiZy8f97fhFlKA==",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
                             UserName = "admin@gmail.com"

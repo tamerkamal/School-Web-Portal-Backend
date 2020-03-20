@@ -10,9 +10,8 @@ namespace SchoolPortalAPI.BOL
     {
         [Key]
         Guid MemberId { get; set; }
-
         [Required]
-        string FirsName { get; set; }
+        string FirstName { get; set; }
         [Required]
         string LastName { get; set; }
         [Required]
