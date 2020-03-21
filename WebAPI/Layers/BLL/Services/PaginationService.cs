@@ -7,14 +7,14 @@ namespace SchoolPortalAPI.BLL
 {
     public class PaginationService<T> : IPaginationService<T> where T : class
     {
-        public int CountTotalRecords(List<T> recordsList)
+        public int CountTotalRecords(IEnumerable<T> recordsList)
         {
             return recordsList.Count();
         }
         public int CountTotalPages(IEnumerable<T> records, int pageSize)
         {
             int totalPages;
-            int totlalRecords = CountTotalRecords(records.ToList());
+            int totlalRecords = CountTotalRecords(records);
             int remainder = (totlalRecords % pageSize);
             if (remainder > 0)
             {
@@ -24,16 +24,13 @@ namespace SchoolPortalAPI.BLL
 
             return totalPages;
         }
-        public List<T> GetPageRecords(IEnumerable<T> records, int pageSize, int pageNum)
+        public List<T> GetPageRecords(IEnumerable<T> records, int? pageSize, int pageNum)
         {
-            //if (CountTotalPages(records, pageSize) <= pageNum)
-            //{
-            return records.Skip((pageNum - 1) * pageSize).Take(pageSize).ToList();
-            //}
-            //else
-            //{
-            //    throw new ArgumentNullException("Page");
-            //}
+            if (pageSize == default)
+            {
+                pageSize = CountTotalRecords(records);
+            }
+            return records.Skip((pageNum - 1) * (int)pageSize).Take((int)pageSize).ToList();
         }
     }
 }

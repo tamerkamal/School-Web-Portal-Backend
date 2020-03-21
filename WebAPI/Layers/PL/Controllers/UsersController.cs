@@ -104,6 +104,7 @@ namespace SchoolPortalAPI.Controllers
         }
 
         [Authorize(Roles = "Admin")]
+        [HttpGet]
         //Get:/Users/Get
         public IEnumerable<Member> Get()
         {
@@ -111,9 +112,9 @@ namespace SchoolPortalAPI.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        [Route("/Users/GetWithPagAndSort/{pageNum}/{pageSize}/{sortBy?}/{isSortDesc?}")]
-        [HttpGet]
-        public IEnumerable<Member> GetWithPaginationAndSorting(int pageNum, int pageSize, string sortBy, bool isSortDesc = false)
+        [HttpGet("{pageNum}/{pageSize}/{sortBy?}/{isSortDesc?}")]
+        //Get:/Users/Get/{pageNum}/{pageSize?}/{sortBy?}/{isSortDesc?}
+        public IEnumerable<Member> GetWithPagAndSort(int pageNum, int pageSize, string sortBy, bool isSortDesc = false)
         {
             if (sortBy == "null")
             {
